@@ -1,0 +1,24 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+
+# 변수 파일 (민감정보)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# CLI 설정
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# 인증키
+*.pem
+*.key

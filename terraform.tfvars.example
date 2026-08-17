@@ -1,0 +1,6 @@
+# variables.tf에서 선언된 입력 변수에 실제 값을 할당하는 파일
+
+access_key  = "YOUR_NCP_ACCESS_KEY"
+secret_key  = "YOUR_NCP_SECRET_KEY"
+region      = "KR"
+site        = "gov"
