@@ -1,4 +1,4 @@
-# 모듈이 외부로부터 주입받는 값을 variable 블록으로 선언하는 파일
+# ── 인증 ──────────────────────────────────────────────
 
 variable "access_key" {
   description = "NCP API Access Key"
@@ -12,16 +12,29 @@ variable "secret_key" {
   sensitive   = true
 }
 
+# ── 환경 ──────────────────────────────────────────────
+
+variable "site" {
+  description = "NCP 사이트 구분 (public / gov / fin)"
+  type        = string
+  default     = "gov"
+
+  validation {
+    condition     = contains(["public", "gov", "fin"], var.site)
+    error_message = "site 값은 public, gov, fin 중 하나여야 합니다."
+  }
+}
+
 variable "region" {
   description = "NCP 리전 코드"
   type        = string
   default     = "KR"
 }
 
-variable "site" {
-  description = "NCP 사이트 구분 (public / gov / fin)"
+variable "zone" {
+  description = "가용 존 (공공 KR 리전은 KR-1 단일)"
   type        = string
-  default     = "gov"
+  default     = "KR-1"
 }
 
 variable "name_prefix" {
@@ -30,11 +43,7 @@ variable "name_prefix" {
   default     = "khg"
 }
 
-variable "zone" {
-  description = "가용 존"
-  type        = string
-  default     = "KR-1"
-}
+# ── 네트워크 ──────────────────────────────────────────────
 
 variable "vpc_cidr" {
   description = "VPC IPv4 CIDR 블록"
